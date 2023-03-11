@@ -34,7 +34,7 @@ public class MainActivity extends AppCompatActivity {
         checkBT();
     }
 
-    public void onClickConnect(View view) {
+    public void onClickConnectHr(View view) {
         checkBT();
         DEVICE_ID = sharedPreferences.getString(sharedPrefsKey,"");
         Log.d(TAG,DEVICE_ID);
@@ -49,6 +49,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void onClickChangeID(View view) {
+
         showDialog(view);
     }
 
@@ -88,8 +89,8 @@ public class MainActivity extends AppCompatActivity {
         }
 
         //requestPermissions() method needs to be called when the build SDK version is 23 or above
-        if(Build.VERSION.SDK_INT >= 23){
-            this.requestPermissions(new String[]{android.Manifest.permission.ACCESS_COARSE_LOCATION, Manifest.permission.ACCESS_FINE_LOCATION},1);
+        if(Build.VERSION.SDK_INT >= 23) {
+            this.requestPermissions(new String[]{android.Manifest.permission.ACCESS_COARSE_LOCATION, Manifest.permission.ACCESS_FINE_LOCATION}, 1);
         }
     }
 

@@ -19,9 +19,6 @@
         android:theme="@style/Theme.SleepKeeper"
         tools:targetApi="31">
         <activity
-            android:name=".HRGraph"
-            android:exported="false" />
-        <activity
             android:name=".SelectBle"
             android:exported="false" />
         <activity
