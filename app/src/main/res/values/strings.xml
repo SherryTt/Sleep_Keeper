@@ -10,5 +10,4 @@
     <string name="disconnected">Disconnected!</string>
     <string name="device_id">device_id</string>
     <string name="set_id_button">Change device ID</string>
-    <string name="export_data">Export Data</string>
 </resources>
