@@ -7,6 +7,17 @@
     android:orientation="vertical"
     tools:context=".HRGraph">
 
+    <TextView
+        android:id="@+id/textViewID"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textAlignment="center"
+        android:text="DEVICE ID"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+
     <com.androidplot.xy.XYPlot
         android:id="@+id/hr_view_plot"
         style="@style/FullScreenGraph"
@@ -24,7 +35,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textViewID"
         app:layout_constraintVertical_bias="0.0"
         app:lineLabels="left"
         app:rangeTitle="@string/hr_range_title"
@@ -57,36 +68,36 @@
 
 
     <TextView
-        android:id="@+id/textView5"
+        android:id="@+id/textViewAve"
         android:layout_width="135dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="60dp"
         android:text="Average"
-        app:layout_constraintEnd_toStartOf="@+id/textView6"
+        app:layout_constraintEnd_toStartOf="@+id/textViewMin"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="@+id/linearLayout" />
 
     <TextView
-        android:id="@+id/textView7"
+        android:id="@+id/textViewMax"
         android:layout_width="136dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="60dp"
         android:text="Min"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toEndOf="@+id/textView6"
+        app:layout_constraintStart_toEndOf="@+id/textViewMin"
         app:layout_constraintTop_toTopOf="@+id/linearLayout" />
 
     <TextView
-        android:id="@+id/textView6"
+        android:id="@+id/textViewMin"
         android:layout_width="136dp"
         android:layout_height="0dp"
         android:layout_marginTop="60dp"
         android:text="Max"
-        app:layout_constraintEnd_toStartOf="@+id/textView7"
+        app:layout_constraintEnd_toStartOf="@+id/textViewMax"
         app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toEndOf="@+id/textView5"
+        app:layout_constraintStart_toEndOf="@+id/textViewAve"
         app:layout_constraintTop_toTopOf="@+id/linearLayout" />
 
 
