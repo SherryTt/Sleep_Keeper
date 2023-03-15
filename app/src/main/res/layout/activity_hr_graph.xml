@@ -22,7 +22,7 @@
         android:id="@+id/hr_view_plot"
         style="@style/FullScreenGraph"
         android:layout_width="fill_parent"
-        android:layout_height="450dp"
+        android:layout_height="420dp"
         app:backgroundColor="@color/colorAccent"
         app:graphBackgroundColor="@color/colorAccent"
         app:graphMarginBottom="12dp"

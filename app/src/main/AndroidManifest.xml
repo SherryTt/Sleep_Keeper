@@ -20,13 +20,20 @@
         tools:targetApi="31">
         <activity
             android:name=".MainActivity"
-            android:exported="true">
+            android:exported="true"
+            android:label="@string/app_name"
+            android:screenOrientation="portrait">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity
+            android:name=".HRGraph"
+            android:exported="false"
+            android:label="@string/hr_name"
+            android:parentActivityName=".MainActivity"
+            android:screenOrientation="portrait" />
     </application>
 
 </manifest>

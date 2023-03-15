@@ -12,13 +12,13 @@ import android.content.SharedPreferences;
 import android.os.Build;
 import android.os.Bundle;
 import android.text.InputType;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.EditText;
 import android.widget.Toast;
 
-import kotlin.jvm.internal.Intrinsics;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -36,36 +36,20 @@ public class MainActivity extends AppCompatActivity {
         checkBT();
     }
 
-
     public void onClickConnectHr(View view) {
         checkBT();
-        if (this.DEVICE_ID != null && !Intrinsics.areEqual(this.DEVICE_ID, "")) {
-            this.showToast("connect to device " + " " + this.DEVICE_ID);
-            Intent intent = new Intent((Context)this, HRGraph.class);
-            intent.putExtra("id", this.DEVICE_ID);
-            this.startActivity(intent);
-        } else {
-            SharedPreferences var10001 = this.sharedPreferences;
-            if (var10001 == null) {
-                Intrinsics.throwUninitializedPropertyAccessException("sharedPreferences");
-            }
-
-            this.DEVICE_ID = var10001.getString("polar_device_id", "");
-            this.showDialog(view);
-        }
-
-        /*
         DEVICE_ID = sharedPreferences.getString(sharedPrefsKey,"");
         Log.d(TAG,DEVICE_ID);
-        if(DEVICE_ID.equals("") || DEVICE_ID.equals(null)){
+        if(DEVICE_ID.equals("")){
             showDialog(view);
         } else {
-            showToast(this,getString(R.string.connecting) + " " + DEVICE_ID);
+            Toast.makeText(this,getString(R.string.connecting) + " " + DEVICE_ID,Toast.LENGTH_SHORT).show();
             Intent intent = new Intent(this, HRGraph.class);
             intent.putExtra("id", DEVICE_ID);
             startActivity(intent);
-        }*/
+        }
     }
+
 
     public void onClickChangeID(View view) {
         showDialog(view);
