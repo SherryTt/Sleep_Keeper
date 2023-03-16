@@ -6,12 +6,17 @@
 
 - H10 Heart Rate Monitor<Any Polar product will do>
 - Android device
+![polar](/image/polar.png)
 
 #### How to use?
 
 1. Wear Polar H10 heart rate sensor before go to bed.
+![wear](/image/wear.jpg)
 2. Connect the device to SleepKeeper app with device ID
+![id](/image/id.png)
+![ble](/image/ble.png)
 3. Making sure heartrate graph in app display propery
+![hr](/image/hr.png)
 4. Sleep  
   
 5. -Case A: If you have nightmare-<br/>
