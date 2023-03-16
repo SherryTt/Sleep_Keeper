@@ -7,22 +7,13 @@
     android:orientation="vertical"
     tools:context=".HRGraph">
 
-    <TextView
-        android:id="@+id/textViewID"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:textAlignment="center"
-        android:text="DEVICE ID"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
 
     <com.androidplot.xy.XYPlot
         android:id="@+id/hr_view_plot"
         style="@style/FullScreenGraph"
         android:layout_width="fill_parent"
-        android:layout_height="420dp"
+        android:layout_height="390dp"
+        android:layout_marginBottom="340dp"
         app:backgroundColor="@color/colorAccent"
         app:graphBackgroundColor="@color/colorAccent"
         app:graphMarginBottom="12dp"
