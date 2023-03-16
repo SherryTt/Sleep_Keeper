@@ -19,8 +19,8 @@
 ![hr](/image/hr.png)<br/>
 4. Sleep  
   
-5. -Case A: If you have nightmare-<br/>
+5. -Case A: If you see nightmare-<br/>
    The app will disturb your nightmare by making beep sound
   
-   -Case B: If you have nightmare-<br/>
+   -Case B: If you don't see nightmare-<br/>
     The app will record your heartrate summary
