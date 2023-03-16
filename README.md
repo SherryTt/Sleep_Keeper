@@ -1,7 +1,6 @@
 # Sleep Keeper -Nightmare baster app-
 
 ## This application is used as nightmare detector and disturb your nightmare with alerm for school project. While user sleep, app will trace user's heart rate and when heart rate jump sharply(which means you highly likely have nightmare) app beep and disturb user's nightmare.
-## Created by Shiori Takei
 
 This application needs below
 
