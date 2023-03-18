@@ -1,16 +1,16 @@
 package com.blueradix.android.sleepkeeper;
 
 import android.graphics.Color;
-
 import com.androidplot.xy.LineAndPointFormatter;
 import com.androidplot.xy.SimpleXYSeries;
 import com.androidplot.xy.XYSeriesFormatter;
-
 import java.util.Arrays;
 import java.util.Date;
 import java.util.List;
-
 import com.polar.sdk.api.model.PolarHrData;
+
+
+
 
 public class TimePlotter {
     private static final String TAG = "TimePlotter";

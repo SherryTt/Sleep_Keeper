@@ -20,12 +20,13 @@ import android.widget.EditText;
 import android.widget.Toast;
 
 
+
 public class MainActivity extends AppCompatActivity {
 
     private String TAG = "Polar_MainActivity";
+    private ActivityResultLauncher bluetoothOnActivityResultLauncher;
     private String sharedPrefsKey = "polar_device_id";
     private String DEVICE_ID;
-    private ActivityResultLauncher bluetoothOnActivityResultLauncher;
     SharedPreferences sharedPreferences;
 
     @Override
@@ -38,18 +39,17 @@ public class MainActivity extends AppCompatActivity {
 
     public void onClickConnectHr(View view) {
         checkBT();
-        DEVICE_ID = sharedPreferences.getString(sharedPrefsKey,"");
-        Log.d(TAG,DEVICE_ID);
-        if(DEVICE_ID.equals("")){
+        DEVICE_ID = sharedPreferences.getString(sharedPrefsKey, "");
+        Log.d(TAG, DEVICE_ID);
+        if (DEVICE_ID.equals("")) {
             showDialog(view);
         } else {
-            Toast.makeText(this,getString(R.string.connecting) + " " + DEVICE_ID,Toast.LENGTH_SHORT).show();
+            showToast(getString(R.string.connecting) + " " + DEVICE_ID);
             Intent intent = new Intent(this, HRGraph.class);
             intent.putExtra("id", DEVICE_ID);
             startActivity(intent);
         }
     }
-
 
     public void onClickChangeID(View view) {
         showDialog(view);
@@ -77,6 +77,7 @@ public class MainActivity extends AppCompatActivity {
         dialog.setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int which) {
+
                 dialog.cancel();
             }
         });
@@ -87,6 +88,7 @@ public class MainActivity extends AppCompatActivity {
         BluetoothAdapter mBluetoothAdapter = BluetoothAdapter.getDefaultAdapter();
         if (mBluetoothAdapter != null && !mBluetoothAdapter.isEnabled()) {
             Intent enableBtIntent = new Intent("android.bluetooth.adapter.action.REQUEST_ENABLE");
+            //startActivityForResult(enableBtIntent, 2);
             this.bluetoothOnActivityResultLauncher.launch(enableBtIntent);
         }
 

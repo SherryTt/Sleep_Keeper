@@ -32,7 +32,7 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="64dp"
         android:layout_marginEnd="64dp"
-        android:layout_marginBottom="220dp"
+        android:layout_marginBottom="380dp"
         android:background="@color/colorPrimary"
         android:onClick="onClickConnectHr"
         android:padding="8dp"
