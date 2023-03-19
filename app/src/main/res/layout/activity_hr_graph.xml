@@ -12,7 +12,7 @@
         android:id="@+id/hr_view_plot"
         style="@style/FullScreenGraph"
         android:layout_width="fill_parent"
-        android:layout_height="300dp"
+        android:layout_height="380dp"
         app:backgroundColor="@color/colorPrimaryDark"
         app:graphBackgroundColor="@color/colorPrimaryDark"
         app:graphMarginBottom="12dp"
@@ -21,20 +21,18 @@
         app:graphMarginTop="20dp"
         app:gridBackgroundColor="@color/colorPrimaryDark"
         app:gridInsetLeft="25dp"
-        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.0"
         app:lineLabels="left"
         app:rangeTitle="@string/hr_range_title"
-        app:rangeTitleTextColor="@android:color/black"
+        app:rangeTitleTextColor="@android:color/white"
         app:rangeTitleTextSize="12dp"
         app:renderMode="use_background_thread"
         app:title="@string/hr_title"
-        app:titleTextColor="@android:color/black"
+        app:titleTextColor="@android:color/white"
         app:titleTextSize="15dp" />
+
 
     <LinearLayout
         android:id="@+id/linearLayout"
@@ -48,9 +46,8 @@
 
     <TextView
         android:id="@+id/textViewHr"
-        android:layout_width="165dp"
-        android:layout_height="215dp"
-        android:layout_marginTop="60dp"
+        android:layout_width="150dp"
+        android:layout_height="175dp"
         android:background="@drawable/box"
         android:gravity="center_horizontal"
         android:text="HR"
@@ -60,14 +57,12 @@
         app:layout_constraintEnd_toStartOf="@+id/textViewNightmare"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/linearLayout"
-        app:layout_constraintVertical_bias="0.521" />
+        app:layout_constraintTop_toBottomOf="@+id/linearLayout" />
 
     <TextView
         android:id="@+id/textViewSleep"
-        android:layout_width="165dp"
-        android:layout_height="215dp"
-        android:layout_marginTop="60dp"
+        android:layout_width="150dp"
+        android:layout_height="175dp"
         android:background="@drawable/box"
         android:gravity="center_horizontal"
         android:text="Sleep"
@@ -77,14 +72,13 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toEndOf="@+id/textViewNightmare"
-        app:layout_constraintTop_toTopOf="@+id/linearLayout"
-        app:layout_constraintVertical_bias="0.521" />
+
+        app:layout_constraintTop_toBottomOf="@+id/linearLayout" />
 
     <TextView
         android:id="@+id/textViewNightmare"
-        android:layout_width="165dp"
-        android:layout_height="215dp"
-        android:layout_marginTop="60dp"
+        android:layout_width="150dp"
+        android:layout_height="175dp"
         android:background="@drawable/box"
         android:gravity="center_horizontal"
         android:text="Nightmare"
@@ -94,7 +88,8 @@
         app:layout_constraintEnd_toStartOf="@+id/textViewSleep"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toEndOf="@+id/textViewHr"
-        app:layout_constraintTop_toTopOf="@+id/linearLayout"
+        app:layout_constraintTop_toBottomOf="@+id/linearLayout" />
+   ¥
         app:layout_constraintVertical_bias="0.521" />
 
     <TextView
@@ -114,12 +109,13 @@
         android:id="@+id/textViewRr"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="40dp"
+        android:layout_marginTop="12dp"
         android:gravity="center"
         android:text="RR"
-        android:textStyle="bold"
         android:textSize="25sp"
+        android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="@+id/textViewHr"
+        app:layout_constraintHorizontal_bias="0.506"
         app:layout_constraintStart_toStartOf="@+id/textViewHr"
         app:layout_constraintTop_toBottomOf="@+id/textViewHrNum" />
 
@@ -150,8 +146,8 @@
 
     <ImageView
         android:id="@+id/imageViewSleep"
-        android:layout_width="100dp"
-        android:layout_height="98dp"
+        android:layout_width="84dp"
+        android:layout_height="69dp"
         android:layout_marginTop="16dp"
         android:gravity="center"
         app:layout_constraintEnd_toEndOf="@+id/textViewSleep"
@@ -179,14 +175,13 @@
         android:layout_weight="1"
         android:gravity="center_horizontal"
         android:text="Today's sleep"
-
         android:textSize="25sp"
         android:textStyle="bold"
         app:layout_constraintBottom_toTopOf="@+id/textViewNightmare"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.516"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/hr_view_plot"
-        app:layout_constraintVertical_bias="0.115" />
-
+        app:layout_constraintTop_toBottomOf="@+id/linearLayout"
+        app:layout_constraintVertical_bias="0.715" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

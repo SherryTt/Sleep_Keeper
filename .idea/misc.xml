@@ -6,7 +6,7 @@
         <entry key="app/src/main/res/drawable/box.xml" value="0.214" />
         <entry key="app/src/main/res/layout/activity_heatrate_graph.xml" value="0.1865079365079365" />
         <entry key="app/src/main/res/layout/activity_hr_graph.xml" value="0.1" />
-        <entry key="app/src/main/res/layout/activity_main.xml" value="0.1" />
+        <entry key="app/src/main/res/layout/activity_main.xml" value="0.105" />
         <entry key="app/src/main/res/layout/activity_r.xml" value="0.221875" />
         <entry key="app/src/main/res/layout/activity_select_ble.xml" value="0.1" />
         <entry key="app/src/main/res/layout/fragment_blank.xml" value="0.221875" />

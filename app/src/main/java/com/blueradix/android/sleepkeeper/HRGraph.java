@@ -9,6 +9,7 @@ import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
+
 import com.androidplot.xy.BoundaryMode;
 import com.androidplot.xy.StepMode;
 import com.androidplot.xy.XYPlot;
@@ -64,13 +65,11 @@ public class HRGraph extends AppCompatActivity implements PlotterListener  {
             public void blePowerStateChanged(boolean b) {
                 Log.d(TAG, "--------------------- BluetoothStateChanged " + b);
             }
-/*
+
             @Override
             public void deviceConnecting(PolarDeviceInfo s) {
                 Log.d(TAG, "Device connecting " + s.getDeviceId());
-                Toast.makeText(classContext, R.string.connecting,
-                        Toast.LENGTH_SHORT).show();
-            }*/
+            }
 
 
             @Override
@@ -92,27 +91,12 @@ public class HRGraph extends AppCompatActivity implements PlotterListener  {
             public void hrFeatureReady(@NonNull String s) {
                 Log.d(TAG, "HR Feature ready " + s);
             }
-/*
-            @Override
-            public void hrNotificationReceived(@NonNull String s,
-                                               @NonNull PolarHrData polarHrData) {
-                Log.d(TAG, "HR " + polarHrData.getHr());
-                List<Integer> rrsMs = polarHrData.getRrsMs();
-                StringBuilder msg = new StringBuilder(polarHrData.getHr() + "\n");
-                for (int i : rrsMs) {
-                    msg.append(i).append(",");
-                }
-                if (msg.toString().endsWith(",")) {
-                    msg = new StringBuilder(msg.substring(0, msg.length() - 1));
-                }
-                textViewAve.setText(msg.toString());
-                plotter.addValues(polarHrData);
-            }*/
 
+
+            //Receive and Display Hr/Rr data
             @Override
             public void hrNotificationReceived(String identifier,PolarHrData data) {
                 Log.d(TAG, "HR " + data.getHr() + " RR " + data.getRrsMs());
-
                 if (!data.getRrsMs().isEmpty()) {
                     String rrText = "(" + data.getRrsMs().stream().map(Object::toString).reduce((s, s2) -> s + "ms, " + s2).orElse("") + "ms)";
                     textViewRrNum.setText(rrText);
@@ -122,11 +106,11 @@ public class HRGraph extends AppCompatActivity implements PlotterListener  {
                 plotter.addValues(data);}
             }
 
+
             @Override
             public void polarFtpFeatureReady(@NonNull String s) {
                 Log.d(TAG, "Polar FTP ready " + s);
             }
-
         });
         try {
             api.connectToDevice(device_id);
