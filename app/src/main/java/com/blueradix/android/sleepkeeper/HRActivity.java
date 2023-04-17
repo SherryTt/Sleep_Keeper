@@ -8,9 +8,6 @@ import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.lifecycle.LiveData;
-import androidx.room.Room;
-
 
 import com.androidplot.xy.BoundaryMode;
 import com.androidplot.xy.StepMode;
@@ -18,11 +15,14 @@ import com.androidplot.xy.XYPlot;
 import com.androidplot.xy.XYGraphWidget;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
-import com.google.firebase.FirebaseApp;
+import com.google.firebase.firestore.CollectionReference;
+import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.auth.FirebaseAuth;
 
+import com.google.firebase.firestore.Query;
+import com.google.firebase.firestore.QuerySnapshot;
 import com.polar.sdk.api.PolarBleApi;
 import com.polar.sdk.api.PolarBleApiDefaultImpl;
 import com.polar.sdk.api.PolarBleApiCallback;
@@ -33,8 +33,8 @@ import java.util.HashMap;
 
 
 import java.text.DecimalFormat;
-import java.util.List;
 import java.util.Map;
+import java.util.concurrent.ExecutionException;
 
 
 public class HRActivity extends AppCompatActivity implements PlotterListener  {
@@ -49,9 +49,10 @@ public class HRActivity extends AppCompatActivity implements PlotterListener  {
     private XYPlot plot;
     private TimePlotter plotter;
     private static final String TAG = "HRActivity";
-
-    // First, initialize Firebase
-
+    private int minHr = 0;
+    private int findMin;
+    private int maxHr;
+    private  int averageHr;
 
 
     @Override
@@ -59,13 +60,11 @@ public class HRActivity extends AppCompatActivity implements PlotterListener  {
         super.onCreate(savedInstanceState);
 
         setContentView(R.layout.activity_hr_graph);
-
         textViewHrNum = findViewById(R.id.textViewHrNum);
         textViewRrNum = findViewById(R.id.textViewRrNum);
         textViewNightmareNum = findViewById(R.id.textViewNightmareNum);
         textViewSleepRate = findViewById(R.id.textViewRate);
         plot = findViewById(R.id.hr_view_plot);
-
         device_id = getIntent().getStringExtra("id");
 
 
@@ -121,64 +120,110 @@ public class HRActivity extends AppCompatActivity implements PlotterListener  {
                 }
                 textViewHrNum.setText(String.valueOf(data.getHr()));
                 plotter.addValues(data);
-                addData(data);
-/*
-                int average = calcAve();
-                int min = calcMin();
-                int max = calcMax();
 
-                // get the Room database instance
-                HRdataRoomDatabase db = HRdataRoomDatabase.getDatabase(getApplicationContext());
-                HRdataDao hrdatadao = db.hrdataDao();
-                HRdata hrdata = new HRdata(data.getHr()/*,data.getRrsMs()*//*,System.currentTimeMillis(),average,max,min);
-                hrdatadao.insert(hrdata);*/
-
-
-            }
-/*
-            public int calcAve(){return calcAve;}
-            public int calcMin(){return calcMin;}
-            public int calcMax(){return calcMax;}*/
-
-            public void addData(PolarHrData data){
-
-                FirebaseFirestore db = FirebaseFirestore.getInstance();
-
-                Map<String,Object> Hrdata = new HashMap<>();
-                Hrdata.put("heart_rate",data.getHr());
-                Hrdata.put("rr_ms",data.getRrsMs());
-
-                db.collection("Hr_data").add(Hrdata)
-                        .addOnSuccessListener(documentReference -> Log.d(TAG, "DocumentSnapshot added with ID: " + documentReference.getId()))
-                        .addOnFailureListener(e -> Log.w(TAG, "Error adding document", e));
+                addData(data,minHr,maxHr,averageHr);
 
             }
 
-            /* userId
-            public void addData1(PolarHrData data){
 
+            //Insert HR data into DB
+            public void addData(PolarHrData data,int minHr,int maxHr,int averageHr){
                 FirebaseFirestore db = FirebaseFirestore.getInstance();
                 String userId = FirebaseAuth.getInstance().getCurrentUser().getUid();
+                long timestamp = System.currentTimeMillis();
+                String docId = Long.toString(timestamp);
                 DocumentReference docRef = db.collection("users").document(userId)
-                        .collection("HRdata").document();
-                Map<String,Object> Hrdata = new HashMap<>();
-                Hrdata.put("heart_rate",data.getHr());
-                Hrdata.put("rr_ms",data.getRrsMs());
+                        .collection("HRdata").document(docId);
+                Map<String, Object> hrData = new HashMap<>();
+                hrData.put("heart_rate", data.getHr());
+                hrData.put("rr_ms", data.getRrsMs());
+                hrData.put("timestamp", timestamp);
+                hrData.put("average_hr",minHr);
+                hrData.put("max_hr",minHr);
+                hrData.put("min_hr",minHr);
 
-                docRef.set(Hrdata)
-                        .addOnSuccessListener(new OnSuccessListener<Void>() {
-                            @Override
-                            public void onSuccess(Void aVoid) {
-                                Log.d(TAG, "DocumentSnapshot added with ID: " + docRef.getId());
-                            }
-                        })
-                        .addOnFailureListener(new OnFailureListener() {
-                            @Override
-                            public void onFailure(@NonNull Exception e) {
-                                Log.w(TAG, "Error adding document", e);
-                            }
-                        });
-            }*/
+                docRef.set(hrData)
+                        .addOnSuccessListener(aVoid -> Log.d(TAG, "HR data added: " + hrData))
+                        .addOnFailureListener(e -> Log.e(TAG, "Error adding HR data", e));
+            }
+
+
+            //Find minimum HR value
+            public void getMinimumHeartRate(){
+
+                FirebaseFirestore db = FirebaseFirestore.getInstance();
+                // Access the "heart_rate" collection
+                CollectionReference heartRateRef = db.collection("HRdata");
+
+                // Query the collection to get the minimum heart rate value
+                Query query = heartRateRef.orderBy("heart_rate", Query.Direction.ASCENDING).limit(1);
+
+                query.get().addOnSuccessListener(new OnSuccessListener<QuerySnapshot>() {
+                    @Override
+                    public void onSuccess(QuerySnapshot queryDocumentSnapshots) {
+                        // Check if the result set is not empty
+                        if (!queryDocumentSnapshots.isEmpty()) {
+                            // Get the first document in the result set
+                            DocumentSnapshot documentSnapshot = queryDocumentSnapshots.getDocuments().get(0);
+                            // Get the heart rate value
+                            int minimumHr = documentSnapshot.getLong("heart_rate").intValue();
+                            passMinHr(minimumHr);
+                        } else {
+                           int minimumHr = 0;
+                            passMinHr(minimumHr);
+                        }
+                    }
+                }).addOnFailureListener(new OnFailureListener() {
+                    @Override
+                    public void onFailure(@NonNull Exception e) {
+                        // Log error message
+                        Log.d(TAG, "Error getting minimum heart rate value", e);
+                    }
+                });
+            }
+
+            public int passMinHr(int minHr){
+                return minHr;
+            }
+
+            //Find maxmum HR value
+            public void getMaxiHeartRate(){
+
+                FirebaseFirestore db = FirebaseFirestore.getInstance();
+                // Access the "heart_rate" collection
+                CollectionReference heartRateRef = db.collection("HRdata");
+
+                // Query the collection to get the minimum heart rate value
+                Query query = heartRateRef.orderBy("heart_rate", Query.Direction.DESCENDING).limit(1);
+
+                query.get().addOnSuccessListener(new OnSuccessListener<QuerySnapshot>() {
+                    @Override
+                    public void onSuccess(QuerySnapshot queryDocumentSnapshots) {
+                        // Check if the result set is not empty
+                        if (!queryDocumentSnapshots.isEmpty()) {
+                            // Get the first document in the result set
+                            DocumentSnapshot documentSnapshot = queryDocumentSnapshots.getDocuments().get(0);
+                            // Get the heart rate value
+                            int maxmumHr = documentSnapshot.getLong("heart_rate").intValue();
+                            passMinHr(maxmumHr);
+                        } else {
+                            int maxmumHr = 0;
+                            passMaxHr(maxmumHr);
+                        }
+                    }
+                }).addOnFailureListener(new OnFailureListener() {
+                    @Override
+                    public void onFailure(@NonNull Exception e) {
+                        // Log error message
+                        Log.d(TAG, "Error getting maxmum heart rate value", e);
+                    }
+                });
+            }
+
+            public int passMaxHr(int maxHr){
+                return maxHr;
+            }
+
 
             @Override
             public void polarFtpFeatureReady(@NonNull String s) {
