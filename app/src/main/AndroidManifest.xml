@@ -3,34 +3,19 @@
     xmlns:tools="http://schemas.android.com/tools"
     package="com.blueradix.android.sleepkeeper">
 
-    <!-- Polar SDK needs Bluetooth scan permission to search for BLE devices.-->
     <uses-permission
         android:name="android.permission.BLUETOOTH_SCAN"
-        android:usesPermissionFlags="neverForLocation" />
-
-    <!-- Polar SDK needs Bluetooth connect permission to connect for found BLE devices.-->
+        android:usesPermissionFlags="neverForLocation" /> <!-- Polar SDK needs Bluetooth connect permission to connect for found BLE devices. -->
     <uses-permission android:name="android.permission.BLUETOOTH_CONNECT" />
-
-    <!-- Allows Polar SDK to connect to paired bluetooth devices. Legacy Bluetooth permission,
-     which is needed on devices with API 30 (Android Q) or older. -->
     <uses-permission
         android:name="android.permission.BLUETOOTH"
         android:maxSdkVersion="30" />
-
-    <!-- Allows Polar SDK to discover and pair bluetooth devices. Legacy Bluetooth permission,
-     which is needed on devices with API 30 (Android Q) or older. -->
     <uses-permission
         android:name="android.permission.BLUETOOTH_ADMIN"
         android:maxSdkVersion="30" />
-
-    <!-- Polar SDK needs the fine location permission to get results for Bluetooth scan. Request
-    fine location permission on devices with API 30 (Android Q). -->
     <uses-permission
         android:name="android.permission.ACCESS_FINE_LOCATION"
         android:maxSdkVersion="30" />
-
-    <!-- The coarse location permission is needed, if fine location permission is requested. Request
-     coarse location permission on devices with API 30 (Android Q). -->
     <uses-permission
         android:name="android.permission.ACCESS_COARSE_LOCATION"
         android:maxSdkVersion="30" />
@@ -44,19 +29,41 @@
         android:theme="@style/Theme.SleepKeeper"
         tools:targetApi="31">
         <activity
+            android:name=".SplashActivity"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+
+        <activity android:name=".ForgotPasswordActivity"
+                  android:label="Sleep Keeper"/>
+
+        <activity
+            android:name=".SignUpActivity"
+            android:label="Sleep Keeper"
+            android:exported="false">
+        </activity>
+
+        <activity
+            android:name=".LoginActivity"
+            android:exported="false"
+            android:label="Sleep Keeper"
+           />
+        <activity
             android:name=".MainActivity"
             android:exported="true"
             android:label="@string/app_name"
             android:screenOrientation="portrait">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-                <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
         <activity
-            android:name=".HRGraph"
+            android:name=".HRActivity"
             android:exported="false"
-            android:label="@string/hr_name"
+            android:label="Sleep Keeper"
             android:parentActivityName=".MainActivity"
             android:screenOrientation="portrait" />
     </application>

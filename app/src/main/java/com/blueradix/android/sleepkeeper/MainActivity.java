@@ -19,6 +19,8 @@ import android.view.ViewGroup;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import com.polar.sdk.api.PolarBleApi;
+import com.polar.sdk.api.PolarBleApiDefaultImpl;
 
 
 public class MainActivity extends AppCompatActivity {
@@ -27,7 +29,9 @@ public class MainActivity extends AppCompatActivity {
     private ActivityResultLauncher bluetoothOnActivityResultLauncher;
     private String sharedPrefsKey = "polar_device_id";
     private String DEVICE_ID;
+    private PolarBleApi api;
     SharedPreferences sharedPreferences;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -45,7 +49,7 @@ public class MainActivity extends AppCompatActivity {
             showDialog(view);
         } else {
             showToast(getString(R.string.connecting) + " " + DEVICE_ID);
-            Intent intent = new Intent(this, HRGraph.class);
+            Intent intent = new Intent(this, HRActivity.class);
             intent.putExtra("id", DEVICE_ID);
             startActivity(intent);
         }
@@ -83,6 +87,8 @@ public class MainActivity extends AppCompatActivity {
         });
         dialog.show();
     }
+
+
 
     public void checkBT(){
         BluetoothAdapter mBluetoothAdapter = BluetoothAdapter.getDefaultAdapter();

@@ -1,12 +1,14 @@
 package com.blueradix.android.sleepkeeper;
 
 import android.graphics.Color;
+
 import com.androidplot.xy.LineAndPointFormatter;
 import com.androidplot.xy.SimpleXYSeries;
 import com.androidplot.xy.XYSeriesFormatter;
 import java.util.Arrays;
 import java.util.Date;
 import java.util.List;
+
 import com.polar.sdk.api.model.PolarHrData;
 
 
@@ -17,7 +19,6 @@ public class TimePlotter {
     private static final int NVALS = 300;  // 5 min
     private static final double RR_SCALE = .1;
     private PlotterListener listener;
-
     private XYSeriesFormatter hrFormatter;
     private XYSeriesFormatter rrFormatter;
     private SimpleXYSeries hrSeries;
@@ -34,16 +35,19 @@ public class TimePlotter {
         double delta = (endTime - startTime) / (NVALS - 1);
 
         // Specify initial values to keep it from auto sizing
+
         for (int i = 0; i < NVALS; i++) {
             xHrVals[i] = startTime + i * delta;
-            yHrVals[i] = 60d;
+            yHrVals[i] = 50d;
+
             xRrVals[i] = startTime + i * delta;
-            yRrVals[i] = 100d;
+            yRrVals[i] = 200d;
         }
 
         hrFormatter = new LineAndPointFormatter(Color.RED, null, null, null);
         hrFormatter.setLegendIconEnabled(false);
         hrSeries = new SimpleXYSeries(Arrays.asList(xHrVals), Arrays.asList(yHrVals), "HR");
+
         rrFormatter = new LineAndPointFormatter(Color.BLUE, null, null, null);
         rrFormatter.setLegendIconEnabled(false);
         rrSeries = new SimpleXYSeries(Arrays.asList(xRrVals), Arrays.asList(yRrVals), "HR");
@@ -53,9 +57,7 @@ public class TimePlotter {
         return hrSeries;
     }
 
-    public SimpleXYSeries getRrSeries() {
-        return rrSeries;
-    }
+    public SimpleXYSeries getRrSeries() { return rrSeries; }
 
     public XYSeriesFormatter getHrFormatter() {
         return hrFormatter;
@@ -92,6 +94,7 @@ public class TimePlotter {
 
         // Scale the RR values by this to use the same axis. (Could implement
         // NormedXYSeries and use two axes)
+
         List<Integer> rrsMs = polarHrData.getRrsMs();
         int nRrVals = rrsMs.size();
         if (nRrVals > 0) {
