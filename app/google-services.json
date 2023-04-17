@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "975258612455",
+    "project_id": "sleepkeeper-ab405",
+    "storage_bucket": "sleepkeeper-ab405.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:975258612455:android:8cceaf5ee787667a932842",
+        "android_client_info": {
+          "package_name": "com.blueradix.android.sleepkeeper"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "975258612455-bku79otc3b67imnkjq3jgtb2lb7g91dv.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBnFA_75E7sKBFOK7rKlcY2pBpDpOeqxmY"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "975258612455-bku79otc3b67imnkjq3jgtb2lb7g91dv.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
