@@ -41,6 +41,7 @@ public class MainActivity extends AppCompatActivity {
         checkBT();
     }
 
+
     public void onClickConnectHr(View view) {
         checkBT();
         DEVICE_ID = sharedPreferences.getString(sharedPrefsKey, "");
@@ -94,7 +95,7 @@ public class MainActivity extends AppCompatActivity {
         BluetoothAdapter mBluetoothAdapter = BluetoothAdapter.getDefaultAdapter();
         if (mBluetoothAdapter != null && !mBluetoothAdapter.isEnabled()) {
             Intent enableBtIntent = new Intent("android.bluetooth.adapter.action.REQUEST_ENABLE");
-            //startActivityForResult(enableBtIntent, 2);
+            startActivityForResult(enableBtIntent, 2);
             this.bluetoothOnActivityResultLauncher.launch(enableBtIntent);
         }
 

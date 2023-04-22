@@ -54,43 +54,71 @@
         android:textSize="25sp"
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toStartOf="@+id/textViewNightmare"
+        app:layout_constraintEnd_toStartOf="@+id/textViewAve"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/linearLayout" />
+        app:layout_constraintTop_toBottomOf="@+id/linearLayout"
+        app:layout_constraintVertical_bias="0.322" />
 
     <TextView
-        android:id="@+id/textViewSleep"
+        android:id="@+id/textViewMax"
         android:layout_width="150dp"
         android:layout_height="175dp"
         android:background="@drawable/box"
         android:gravity="center_horizontal"
-        android:text="Sleep"
+        android:text="MAX"
         android:textSize="25sp"
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toEndOf="@+id/textViewNightmare"
-
-        app:layout_constraintTop_toBottomOf="@+id/linearLayout" />
+        app:layout_constraintStart_toEndOf="@+id/textViewAve"
+        app:layout_constraintTop_toBottomOf="@+id/linearLayout"
+        app:layout_constraintVertical_bias="0.322" />
 
     <TextView
-        android:id="@+id/textViewNightmare"
+        android:id="@+id/textViewMin"
+        android:layout_width="63dp"
+        android:layout_height="31dp"
+        android:layout_marginTop="4dp"
+        android:gravity="center"
+        android:text="MIN"
+        android:textSize="25sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="@+id/textViewMax"
+        app:layout_constraintHorizontal_bias="0.54"
+        app:layout_constraintStart_toStartOf="@+id/textViewMax"
+        app:layout_constraintTop_toBottomOf="@+id/textViewMaxNum" />
+
+    <TextView
+        android:id="@+id/textViewMinNum"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:gravity="center_horizontal"
+        android:textSize="25sp"
+        android:text="62"
+        app:layout_constraintEnd_toEndOf="@+id/textViewMax"
+        app:layout_constraintHorizontal_bias="0.53"
+        app:layout_constraintStart_toStartOf="@+id/textViewMax"
+        app:layout_constraintTop_toBottomOf="@+id/textViewMin" />
+
+
+    <TextView
+        android:id="@+id/textViewAve"
         android:layout_width="150dp"
         android:layout_height="175dp"
         android:background="@drawable/box"
         android:gravity="center_horizontal"
-        android:text="Nightmare"
+        android:text="AVERAGE"
         android:textSize="25sp"
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toStartOf="@+id/textViewSleep"
+        app:layout_constraintEnd_toStartOf="@+id/textViewMax"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toEndOf="@+id/textViewHr"
-        app:layout_constraintTop_toBottomOf="@+id/linearLayout" />
-   ¥
-        app:layout_constraintVertical_bias="0.521" />
+        app:layout_constraintTop_toBottomOf="@+id/linearLayout"
+        app:layout_constraintVertical_bias="0.323" />
 
     <TextView
         android:id="@+id/textViewHrNum"
@@ -133,40 +161,29 @@
         app:layout_constraintTop_toBottomOf="@+id/textViewRr" />
 
     <TextView
-        android:id="@+id/textViewNightmareNum"
+        android:id="@+id/textViewAveNum"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="88dp"
         android:gravity="center"
-        android:text="0 times"
+        android:text="67"
         android:textSize="25sp"
-        app:layout_constraintEnd_toEndOf="@+id/textViewNightmare"
-        app:layout_constraintStart_toStartOf="@+id/textViewNightmare"
-        app:layout_constraintTop_toTopOf="@+id/textViewNightmare" />
+        app:layout_constraintEnd_toEndOf="@+id/textViewAve"
+        app:layout_constraintStart_toStartOf="@+id/textViewAve"
+        app:layout_constraintTop_toTopOf="@+id/textViewAve" />
 
-    <ImageView
-        android:id="@+id/imageViewSleep"
-        android:layout_width="84dp"
-        android:layout_height="69dp"
-        android:layout_marginTop="16dp"
-        android:gravity="center"
-        app:layout_constraintEnd_toEndOf="@+id/textViewSleep"
-        app:layout_constraintHorizontal_bias="0.542"
-        app:layout_constraintStart_toStartOf="@+id/textViewSleep"
-        app:layout_constraintTop_toBottomOf="@+id/textViewRate"
-        tools:srcCompat="@drawable/good" />
 
     <TextView
-        android:id="@+id/textViewRate"
+        android:id="@+id/textViewMaxNum"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="40dp"
-        android:text="GOOD"
+        android:text="90"
         android:textSize="25sp"
         android:gravity="center_horizontal"
-        app:layout_constraintEnd_toEndOf="@+id/textViewSleep"
-        app:layout_constraintStart_toStartOf="@+id/textViewSleep"
-        app:layout_constraintTop_toTopOf="@+id/textViewSleep" />
+        app:layout_constraintEnd_toEndOf="@+id/textViewMax"
+        app:layout_constraintStart_toStartOf="@+id/textViewMax"
+        app:layout_constraintTop_toTopOf="@+id/textViewMax" />
 
     <TextView
         android:id="@+id/textView"
@@ -177,11 +194,20 @@
         android:text="Today's sleep"
         android:textSize="25sp"
         android:textStyle="bold"
-        app:layout_constraintBottom_toTopOf="@+id/textViewNightmare"
+        app:layout_constraintBottom_toTopOf="@+id/textViewAve"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.516"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/linearLayout"
-        app:layout_constraintVertical_bias="0.715" />
+        app:layout_constraintVertical_bias="0.334" />
+
+    <Button
+        android:id="@+id/stopAlarmBtn"
+        android:layout_width="650dp"
+        android:layout_height="74dp"
+        android:layout_marginTop="96dp"
+        android:text="STOP ALARM"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textViewAve" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

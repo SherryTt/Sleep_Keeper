@@ -13,13 +13,13 @@
         <entry key="app/src/main/res/layout/activity_forgot_password.xml" value="0.20579376220703127" />
         <entry key="app/src/main/res/layout/activity_forgotpassword.xml" value="0.1" />
         <entry key="app/src/main/res/layout/activity_heatrate_graph.xml" value="0.1865079365079365" />
-        <entry key="app/src/main/res/layout/activity_hr_graph.xml" value="0.1" />
-        <entry key="app/src/main/res/layout/activity_login.xml" value="0.16379310344827586" />
+        <entry key="app/src/main/res/layout/activity_hr_graph.xml" value="0.17017669677734376" />
+        <entry key="app/src/main/res/layout/activity_login.xml" value="0.1" />
         <entry key="app/src/main/res/layout/activity_main.xml" value="0.105" />
         <entry key="app/src/main/res/layout/activity_r.xml" value="0.221875" />
         <entry key="app/src/main/res/layout/activity_register.xml" value="0.3393493652343751" />
         <entry key="app/src/main/res/layout/activity_select_ble.xml" value="0.1" />
-        <entry key="app/src/main/res/layout/activity_sisgnup.xml" value="0.18343658447265632" />
+        <entry key="app/src/main/res/layout/activity_sisgnup.xml" value="0.14563751220703125" />
         <entry key="app/src/main/res/layout/activity_splash.xml" value="0.1" />
         <entry key="app/src/main/res/layout/fragment_blank.xml" value="0.221875" />
       </map>
