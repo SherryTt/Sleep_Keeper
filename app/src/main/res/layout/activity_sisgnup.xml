@@ -5,15 +5,24 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-
+    android:background="#051145"
     tools:context=".SignUpActivity">
 
+    <ImageView
+        android:id="@+id/imageView2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/back1" />
 
     <TextView
         android:id="@+id/signupscrn"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="50dp"
+        android:textColor="@color/white"
         android:text="Sign Up"
         android:textSize="25dp"
         android:textStyle="bold"
@@ -29,19 +38,22 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="36dp"
         android:text="Email"
+        android:textColor="@color/white"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.313"
+        app:layout_constraintHorizontal_bias="0.26"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/signupscrn" />
 
     <EditText
         android:id="@+id/txtSignupEmailInput"
-        android:layout_width="250dp"
+        android:layout_width="220dp"
         android:layout_height="wrap_content"
+        android:background="@color/white"
         android:ems="10"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/secTxt" />
+
 
     <TextView
         android:id="@+id/thirdTxt"
@@ -49,15 +61,17 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="28dp"
         android:text="Password"
+        android:textColor="@color/white"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.325"
+        app:layout_constraintHorizontal_bias="0.27"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/txtSignupEmailInput" />
 
     <EditText
         android:id="@+id/txtSignupPwdInput"
-        android:layout_width="250dp"
+        android:layout_width="220dp"
         android:layout_height="wrap_content"
+        android:background="@color/white"
         android:ems="10"
         android:inputType="textPassword"
         app:layout_constraintEnd_toEndOf="parent"
@@ -68,9 +82,9 @@
         android:id="@+id/lnkLogin"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="56dp"
+        android:layout_marginTop="55dp"
         android:text="Already have an account? Login here"
-        android:textColor="#3F51B5"
+        android:textColor="@color/white"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/btnSignup" />
@@ -80,7 +94,7 @@
         android:id="@+id/txtSignUpViewError"
         android:layout_width="23dp"
         android:layout_height="32dp"
-        android:layout_marginTop="28dp"
+        android:layout_marginTop="8dp"
         android:text=""
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -88,13 +102,14 @@
 
     <Button
         android:id="@+id/btnSignup"
-        android:layout_width="250dp"
+        android:layout_width="220dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
+        android:layout_marginTop="12dp"
         android:text="Sign Up"
+        android:background="@drawable/button"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.494"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/txtSignUpViewError" />
-
 
 </androidx.constraintlayout.widget.ConstraintLayout>

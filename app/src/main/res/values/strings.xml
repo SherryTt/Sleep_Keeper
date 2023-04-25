@@ -4,12 +4,12 @@
     <string name="hr_title">HR and RR vs. Time (for 5 min)</string>
     <string name="hr_range_title">HR, /sec RR, ms/10</string>
     <string name="disconnect">DISCONNECT</string>
-    <string name="connect2">CONNECT HR/RR</string>
+    <string name="connect2">START</string>
     <string name="connecting">Connecting to device</string>
     <string name="connected">Connected!</string>
     <string name="disconnected">Disconnected!</string>
     <string name="device_id">device_id</string>
-    <string name="set_id_button">Change device ID</string>
+    <string name="set_id_button">CHANGE DEVICE ID</string>
     <string name="title_activity_login">LoginActivity</string>
     <!-- Strings used for fragments for navigation -->
     <string name="first_fragment_label">First Fragment</string>

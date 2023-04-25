@@ -1,21 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:background="#00254d"
+    android:background="#051145"
     android:layout_height="match_parent"
     xmlns:tools="http://schemas.android.com/tools"
     tools:context=".SplashActivity">
 
 
-    <!--on below line we are adding an image view-->
     <ImageView
         android:id="@+id/idIVLogo"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_centerVertical="true"
-        android:src="@drawable/splash1" />
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:src="@drawable/splash" />
 
-    <!--progress bar-->
     <ProgressBar
         android:id="@+id/idPBLoading"
         android:layout_width="wrap_content"

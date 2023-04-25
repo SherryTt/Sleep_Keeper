@@ -6,20 +6,22 @@
         <entry key="../../../../layout/custom_preview.xml" value="0.1" />
         <entry key="app/src/main/res/drawable-v24/ic_launcher_foreground.xml" value="0.1025" />
         <entry key="app/src/main/res/drawable/box.xml" value="0.214" />
+        <entry key="app/src/main/res/drawable/button.xml" value="0.1" />
         <entry key="app/src/main/res/drawable/ic_frame_3.xml" value="0.1025" />
         <entry key="app/src/main/res/drawable/ic_launcher_background.xml" value="0.1025" />
         <entry key="app/src/main/res/drawable/ic_splash.xml" value="0.3347503662109375" />
+        <entry key="app/src/main/res/drawable/ic_start.xml" value="0.1" />
         <entry key="app/src/main/res/layout/activity_forgor_password.xml" value="0.1" />
-        <entry key="app/src/main/res/layout/activity_forgot_password.xml" value="0.20579376220703127" />
+        <entry key="app/src/main/res/layout/activity_forgot_password.xml" value="0.24170616113744076" />
         <entry key="app/src/main/res/layout/activity_forgotpassword.xml" value="0.1" />
         <entry key="app/src/main/res/layout/activity_heatrate_graph.xml" value="0.1865079365079365" />
-        <entry key="app/src/main/res/layout/activity_hr_graph.xml" value="0.17017669677734376" />
-        <entry key="app/src/main/res/layout/activity_login.xml" value="0.1" />
-        <entry key="app/src/main/res/layout/activity_main.xml" value="0.105" />
+        <entry key="app/src/main/res/layout/activity_hr_graph.xml" value="0.1" />
+        <entry key="app/src/main/res/layout/activity_login.xml" value="0.21114864864864866" />
+        <entry key="app/src/main/res/layout/activity_main.xml" value="0.1005706787109375" />
         <entry key="app/src/main/res/layout/activity_r.xml" value="0.221875" />
         <entry key="app/src/main/res/layout/activity_register.xml" value="0.3393493652343751" />
         <entry key="app/src/main/res/layout/activity_select_ble.xml" value="0.1" />
-        <entry key="app/src/main/res/layout/activity_sisgnup.xml" value="0.14563751220703125" />
+        <entry key="app/src/main/res/layout/activity_sisgnup.xml" value="0.2129396984924623" />
         <entry key="app/src/main/res/layout/activity_splash.xml" value="0.1" />
         <entry key="app/src/main/res/layout/fragment_blank.xml" value="0.221875" />
       </map>
