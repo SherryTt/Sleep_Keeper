@@ -14,7 +14,7 @@
   ![wear](/image/wear.jpg)
 2. Connect the device to SleepKeeper app with device ID<br/><br/>
 ![id](/image/id.png)<br/>
-![ble](/image/idchange.png)
+![ble](/image/changeid.png)
 3. Making sure heartrate graph in app display propery<br/><br/>
 ![hr](/image/mainhr.png)<br/>
 4. Sleep  
