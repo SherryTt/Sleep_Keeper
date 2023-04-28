@@ -56,6 +56,7 @@ public class HRActivity extends AppCompatActivity implements PlotterListener  {
     private int avgHR;
     int sumHR = 0;
     int countHR = 0;
+    boolean beepMade = false;
 
 
 
@@ -131,7 +132,7 @@ public class HRActivity extends AppCompatActivity implements PlotterListener  {
                 }
 
                 //Find mim and max value
-                if(heartRate < minHR){
+                if (heartRate < minHR) {
                     minHR = heartRate;
                 }
 
@@ -139,22 +140,29 @@ public class HRActivity extends AppCompatActivity implements PlotterListener  {
                 //Find the average and max by controlling count
                 sumHR += heartRate;
                 countHR++;
-                if(countHR == 1){
+                if (countHR == 1) {
                     avgHR = 0;
                     maxHR = 0;
-                }
-                else if(heartRate > maxHR){
+                } else if (heartRate > maxHR) {
                     maxHR = heartRate;
-                }
-                else {
-                    avgHR = (countHR == 0) ? 0 : sumHR / countHR;
+                } else {
+                    if (countHR == 0) {
+                        avgHR = 0;
+                    } else {
+                        avgHR = sumHR / countHR;
+                    }
                 }
 
                 //Make beep sound if hr is different more than 5 comparing to avgHR
-                int hrDiff = Math.abs(heartRate - avgHR);
-                if ((hrDiff > 5)&&(avgHR != 0)) {
-                    makeBeep();
-                }
+                    int hrDiff = Math.abs(heartRate - avgHR);
+                    if ((hrDiff > 5) && (avgHR != 0)) {
+                        if (!beepMade) {
+                            makeBeep();
+                            beepMade = true;
+                        }
+                    } else {
+                        beepMade = false;
+                    }
 
 
                 textViewHrNum.setText(String.valueOf(data.getHr()));

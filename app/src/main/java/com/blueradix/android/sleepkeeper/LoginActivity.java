@@ -5,12 +5,9 @@ import static android.content.ContentValues.TAG;
 import android.content.Intent;
 import android.os.Bundle;
 
-import com.google.android.gms.tasks.OnCompleteListener;
-import com.google.android.gms.tasks.Task;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
-import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 
@@ -25,7 +22,6 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import org.w3c.dom.Text;
 
 public class LoginActivity extends AppCompatActivity {
 
@@ -57,15 +53,20 @@ public class LoginActivity extends AppCompatActivity {
 
         Loginbtn.setOnClickListener((view) -> {
 
-                if (emailTxtInput.getText().toString().contentEquals("")) {
-                    textViewError.setText("Email cant be empty");
+            if((emailTxtInput.getText().toString().contentEquals(""))&&(passwordTxtInput.getText().toString().contentEquals(""))){
 
-                } else if (passwordTxtInput.getText().toString().contentEquals("")) {
-                    textViewError.setText("Password cant be empty");
-                } else {
+                textViewError.setText("Email and Password cant be empty");
 
+            } else if (emailTxtInput.getText().toString().contentEquals("")) {
 
-                    mAuth.signInWithEmailAndPassword(emailTxtInput.getText().toString(), passwordTxtInput.getText().toString())
+                textViewError.setText("Email cant be empty");
+
+            } else if (passwordTxtInput.getText().toString().contentEquals("")) {
+
+                textViewError.setText("Password cant be empty");
+
+            }else {
+                mAuth.signInWithEmailAndPassword(emailTxtInput.getText().toString(), passwordTxtInput.getText().toString())
                             .addOnCompleteListener(LoginActivity.this,(task) -> {
 
                                 if (task.isSuccessful()) {
@@ -88,6 +89,20 @@ public class LoginActivity extends AppCompatActivity {
                                             sendAgainBtn.setVisibility(View.VISIBLE);
                                             textViewError.setText("Please Verify your EmailID and Login");
 
+                                            sendAgainBtn.setOnClickListener(new View.OnClickListener() {
+                                                @Override
+                                                public void onClick(View v) {
+                                                    FirebaseUser user = mAuth.getCurrentUser();
+                                                    user.sendEmailVerification()
+                                                            .addOnCompleteListener(task -> {
+                                                                if (task.isSuccessful()) {
+                                                                    Toast.makeText(LoginActivity.this, "Verification email sent", Toast.LENGTH_SHORT).show();
+                                                                } else {
+                                                                    Toast.makeText(LoginActivity.this, "Failed to send verification email", Toast.LENGTH_SHORT).show();
+                                                                }
+                                                            });
+                                                }
+                                            });
                                         }
                                     }
 
@@ -108,7 +123,6 @@ public class LoginActivity extends AppCompatActivity {
 
 
     //Below code is to make text view clickable link
-
         String text1 = "Forgot password?";
         SpannableString span1 = new SpannableString(text1);
 

@@ -53,8 +53,6 @@ dependencies {
     //Splash screen API
     implementation 'androidx.core:core-splashscreen:1.0.0-alpha02'
     implementation platform('com.google.firebase:firebase-bom:31.2.3')
-    //implementation 'com.google.firebase:firebase-analytics'
     implementation 'com.google.firebase:firebase-firestore'
-    annotationProcessor "androidx.room:room-compiler:2.4.0-alpha03"
-    implementation "androidx.room:room-runtime:2.4.0-alpha03"
+
 }

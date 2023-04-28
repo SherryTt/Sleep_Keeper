@@ -8,7 +8,6 @@
     android:background="#00254d"
     tools:context=".HRActivity">
 
-
     <ImageView
         android:id="@+id/imageView2"
         android:layout_width="wrap_content"
@@ -22,10 +21,11 @@
     <com.androidplot.xy.XYPlot
         android:id="@+id/hr_view_plot"
         style="@style/FullScreenGraph"
-        android:layout_width="404dp"
-        android:layout_height="261dp"
+        android:layout_width="fill_parent"
+        android:layout_height="450dp"
         app:backgroundColor="@color/white"
         app:graphBackgroundColor="@color/colorblue"
+        android:layout_marginTop="15dp"
         app:graphMarginBottom="12dp"
         app:graphMarginLeft="30dp"
         app:graphMarginRight="5dp"
@@ -44,24 +44,30 @@
         app:titleTextColor="@android:color/white"
         app:titleTextSize="15dp" />
 
-
-    <LinearLayout
-        android:id="@+id/linearLayout"
-        android:layout_width="match_parent"
+    <TextView
+        android:id="@+id/textView"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        app:layout_constraintTop_toBottomOf="@+id/hr_view_plot">
-
-
-    </LinearLayout>
+        android:layout_weight="1"
+        android:gravity="center_horizontal"
+        android:text="Today's sleep"
+        android:textColor="@color/white"
+        android:textSize="25sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toTopOf="@+id/textViewAve"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.103"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/hr_view_plot"
+        app:layout_constraintVertical_bias="0.433" />
 
     <TextView
         android:id="@+id/textViewHr"
-        android:layout_width="135dp"
+        android:layout_width="115dp"
         android:layout_height="150dp"
         android:background="@drawable/box"
         android:gravity="center_horizontal"
-        android:text="HR"
+        android:text="            HR           "
         android:textColor="@color/white"
         android:textSize="20sp"
         android:textStyle="bold"
@@ -69,8 +75,83 @@
         app:layout_constraintEnd_toStartOf="@+id/textViewAve"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/linearLayout"
-        app:layout_constraintVertical_bias="0.545" />
+        app:layout_constraintTop_toBottomOf="@+id/hr_view_plot"
+        app:layout_constraintVertical_bias="0.505" />
+
+    <TextView
+        android:id="@+id/textViewHrNum"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="30dp"
+        android:gravity="center_horizontal"
+        android:text="85"
+        android:textColor="@color/white"
+        android:textSize="20sp"
+        app:layout_constraintEnd_toEndOf="@+id/textViewHr"
+        app:layout_constraintHorizontal_bias="0.487"
+        app:layout_constraintStart_toStartOf="@+id/textViewHr"
+        app:layout_constraintTop_toTopOf="@+id/textViewHr" />
+
+    <TextView
+        android:id="@+id/textViewRr"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:gravity="center"
+        android:text="RR"
+        android:textColor="@color/white"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="@+id/textViewHr"
+        app:layout_constraintHorizontal_bias="0.495"
+        app:layout_constraintStart_toStartOf="@+id/textViewHr"
+        app:layout_constraintTop_toBottomOf="@+id/textViewHrNum" />
+
+    <TextView
+        android:id="@+id/textViewRrNum"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="12dp"
+        android:gravity="center_horizontal"
+        android:textSize="15sp"
+        android:text="(1002ms,1009ms)"
+        android:textColor="@color/white"
+        app:layout_constraintEnd_toEndOf="@+id/textViewHr"
+        app:layout_constraintHorizontal_bias="0.53"
+        app:layout_constraintStart_toStartOf="@+id/textViewHr"
+        app:layout_constraintTop_toBottomOf="@+id/textViewRr" />
+
+
+    <TextView
+        android:id="@+id/textViewAve"
+        android:layout_width="115dp"
+        android:layout_height="150dp"
+        android:background="@drawable/box"
+        android:gravity="center_horizontal"
+        android:text="AVERAGE"
+        android:textColor="@color/white"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/textViewMax"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toEndOf="@+id/textViewHr"
+        app:layout_constraintTop_toBottomOf="@+id/hr_view_plot"
+        app:layout_constraintVertical_bias="0.504" />
+
+    <TextView
+        android:id="@+id/textViewAveNum"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="88dp"
+        android:gravity="center"
+        android:text="67"
+        android:textColor="@color/white"
+        android:textSize="20sp"
+        app:layout_constraintEnd_toEndOf="@+id/textViewAve"
+        app:layout_constraintStart_toStartOf="@+id/textViewAve"
+        app:layout_constraintTop_toTopOf="@+id/textViewAve" />
+
 
     <TextView
         android:id="@+id/textViewMax"
@@ -86,8 +167,22 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toEndOf="@+id/textViewAve"
-        app:layout_constraintTop_toBottomOf="@+id/linearLayout"
-        app:layout_constraintVertical_bias="0.544" />
+        app:layout_constraintTop_toBottomOf="@+id/hr_view_plot"
+        app:layout_constraintVertical_bias="0.504" />
+
+    <TextView
+        android:id="@+id/textViewMaxNum"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="40dp"
+        android:text="90"
+        android:textSize="20sp"
+        android:textColor="@color/white"
+        android:gravity="center_horizontal"
+        app:layout_constraintEnd_toEndOf="@+id/textViewMax"
+        app:layout_constraintStart_toStartOf="@+id/textViewMax"
+        app:layout_constraintTop_toTopOf="@+id/textViewMax" />
+
 
     <TextView
         android:id="@+id/textViewMin"
@@ -119,120 +214,18 @@
         app:layout_constraintTop_toBottomOf="@+id/textViewMin" />
 
 
-    <TextView
-        android:id="@+id/textViewAve"
-        android:layout_width="115dp"
-        android:layout_height="150dp"
-        android:background="@drawable/box"
-        android:gravity="center_horizontal"
-        android:text="AVERAGE"
-        android:textColor="@color/white"
-        android:textSize="20sp"
-        android:textStyle="bold"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toStartOf="@+id/textViewMax"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toEndOf="@+id/textViewHr"
-        app:layout_constraintTop_toBottomOf="@+id/linearLayout"
-        app:layout_constraintVertical_bias="0.544" />
-
-    <TextView
-        android:id="@+id/textViewHrNum"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="44dp"
-        android:gravity="center_horizontal"
-        android:text="85"
-        android:textColor="@color/white"
-        android:textSize="20sp"
-        app:layout_constraintEnd_toEndOf="@+id/textViewHr"
-        app:layout_constraintHorizontal_bias="0.489"
-        app:layout_constraintStart_toStartOf="@+id/textViewHr"
-        app:layout_constraintTop_toTopOf="@+id/textViewHr" />
-
-    <TextView
-        android:id="@+id/textViewRr"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="12dp"
-        android:gravity="center"
-        android:text="RR"
-        android:textSize="20sp"
-        android:textColor="@color/white"
-        android:textStyle="bold"
-        app:layout_constraintEnd_toEndOf="@+id/textViewHr"
-        app:layout_constraintHorizontal_bias="0.506"
-        app:layout_constraintStart_toStartOf="@+id/textViewHr"
-        app:layout_constraintTop_toBottomOf="@+id/textViewHrNum" />
-
-    <TextView
-        android:id="@+id/textViewRrNum"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
-        android:gravity="center_horizontal"
-        android:textSize="15sp"
-        android:text="(1002ms,1009ms)"
-        android:textColor="@color/white"
-        app:layout_constraintEnd_toEndOf="@+id/textViewHr"
-        app:layout_constraintHorizontal_bias="0.53"
-        app:layout_constraintStart_toStartOf="@+id/textViewHr"
-        app:layout_constraintTop_toBottomOf="@+id/textViewRr" />
-
-    <TextView
-        android:id="@+id/textViewAveNum"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="88dp"
-        android:gravity="center"
-        android:text="67"
-        android:textColor="@color/white"
-        android:textSize="20sp"
-        app:layout_constraintEnd_toEndOf="@+id/textViewAve"
-        app:layout_constraintStart_toStartOf="@+id/textViewAve"
-        app:layout_constraintTop_toTopOf="@+id/textViewAve" />
-
-
-    <TextView
-        android:id="@+id/textViewMaxNum"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="40dp"
-        android:text="90"
-        android:textSize="20sp"
-        android:textColor="@color/white"
-        android:gravity="center_horizontal"
-        app:layout_constraintEnd_toEndOf="@+id/textViewMax"
-        app:layout_constraintStart_toStartOf="@+id/textViewMax"
-        app:layout_constraintTop_toTopOf="@+id/textViewMax" />
-
-    <TextView
-        android:id="@+id/textView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_weight="1"
-        android:gravity="center_horizontal"
-        android:text="Today's sleep"
-        android:textColor="@color/white"
-        android:textSize="25sp"
-        android:textStyle="bold"
-        app:layout_constraintBottom_toTopOf="@+id/textViewAve"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.103"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/linearLayout"
-        app:layout_constraintVertical_bias="0.433" />
-
     <Button
         android:id="@+id/stopAlarmBtn"
         android:layout_width="350dp"
         android:layout_height="45dp"
-        android:layout_marginTop="20dp"
+        android:layout_marginTop="30dp"
         android:background="@drawable/button"
         android:text="STOP ALARM"
+        android:layout_marginBottom="30dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.484"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textViewAve" />
+        app:layout_constraintBottom_toBottomOf="parent"
+         />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

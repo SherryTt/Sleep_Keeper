@@ -24,7 +24,7 @@ import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 
-import org.w3c.dom.Text;
+
 
 public class SignUpActivity extends AppCompatActivity {
 
@@ -33,7 +33,8 @@ public class SignUpActivity extends AppCompatActivity {
     Button signupBtn;
     EditText signupEmailInput;
     EditText signupPassInput;
-    TextView errorView;
+    TextView errorPassView;
+    TextView errorEmailView;
     TextView linkLogin;
 
 
@@ -47,27 +48,31 @@ public class SignUpActivity extends AppCompatActivity {
         signupBtn = findViewById(R.id.btnSignup);
         signupEmailInput = findViewById(R.id.txtSignupEmailInput);
         signupPassInput = findViewById(R.id.txtSignupPwdInput);
-        errorView = findViewById(R.id.txtSignUpViewError);
+        errorPassView = findViewById(R.id.txtSignUpPassError);
+        errorEmailView = findViewById(R.id.txtSignUpEmailError);
 
         signupBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
 
-                if (signupEmailInput.getText().toString().contentEquals("")) {
+                errorEmailView.setText("");
+                errorPassView.setText("");
+                //Verification of each text box
+                if((signupEmailInput.getText().toString().contentEquals(""))&&(signupPassInput.getText().toString().contentEquals(""))){
+                    errorPassView.setText("Email and Password cant be empty");
+                }
+                else if (signupEmailInput.getText().toString().contentEquals("")) {
 
-
-                    errorView.setText("Email cannot be empty");
-
+                    errorEmailView.setText("Email cannot be empty");
 
                 } else if (signupPassInput.getText().toString().contentEquals("")) {
 
-
-                    errorView.setText("Password cannot be empty");
-
+                    errorPassView.setText("Password cannot be empty");
 
                 } else {
 
-
+                    errorEmailView.setText("");
+                    errorPassView.setText("");
                     mAuth.createUserWithEmailAndPassword(signupEmailInput.getText().toString(), signupPassInput.getText().toString()).addOnCompleteListener(SignUpActivity.this, new OnCompleteListener<AuthResult>() {
                         @Override
                         public void onComplete(@NonNull Task<AuthResult> task) {
@@ -78,6 +83,7 @@ public class SignUpActivity extends AppCompatActivity {
                                 FirebaseUser user = mAuth.getCurrentUser();
 
                                 try {
+                                    //Send verification email
                                     if (user != null)
                                         user.sendEmailVerification()
                                                 .addOnCompleteListener(new OnCompleteListener<Void>() {
@@ -112,17 +118,14 @@ public class SignUpActivity extends AppCompatActivity {
 
                                                             // create alert dialog
                                                             AlertDialog alertDialog = alertDialogBuilder.create();
-
-                                                            // show it
                                                             alertDialog.show();
-
 
                                                         }
                                                     }
                                                 });
 
                                 } catch (Exception e) {
-                                    errorView.setText(e.getMessage());
+                                    errorPassView.setText(e.getMessage());
                                 }
                             } else {
                                 // If sign in fails, display a message to the user.
@@ -131,7 +134,7 @@ public class SignUpActivity extends AppCompatActivity {
                                         Toast.LENGTH_SHORT).show();
 
                                 if (task.getException() != null) {
-                                    errorView.setText(task.getException().getMessage());
+                                    errorPassView.setText(task.getException().getMessage());
                                 }
 
                             }

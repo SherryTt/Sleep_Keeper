@@ -12,7 +12,7 @@
         <entry key="app/src/main/res/drawable/ic_splash.xml" value="0.3347503662109375" />
         <entry key="app/src/main/res/drawable/ic_start.xml" value="0.1" />
         <entry key="app/src/main/res/layout/activity_forgor_password.xml" value="0.1" />
-        <entry key="app/src/main/res/layout/activity_forgot_password.xml" value="0.24170616113744076" />
+        <entry key="app/src/main/res/layout/activity_forgot_password.xml" value="0.25643310546875" />
         <entry key="app/src/main/res/layout/activity_forgotpassword.xml" value="0.1" />
         <entry key="app/src/main/res/layout/activity_heatrate_graph.xml" value="0.1865079365079365" />
         <entry key="app/src/main/res/layout/activity_hr_graph.xml" value="0.1" />
@@ -21,9 +21,11 @@
         <entry key="app/src/main/res/layout/activity_r.xml" value="0.221875" />
         <entry key="app/src/main/res/layout/activity_register.xml" value="0.3393493652343751" />
         <entry key="app/src/main/res/layout/activity_select_ble.xml" value="0.1" />
-        <entry key="app/src/main/res/layout/activity_sisgnup.xml" value="0.2129396984924623" />
+        <entry key="app/src/main/res/layout/activity_sisgnup.xml" value="0.32692504882812506" />
         <entry key="app/src/main/res/layout/activity_splash.xml" value="0.1" />
         <entry key="app/src/main/res/layout/fragment_blank.xml" value="0.221875" />
+        <entry key="app/src/main/res/mipmap-anydpi-v26/ic_launcher.xml" value="0.1" />
+        <entry key="app/src/main/res/mipmap-anydpi-v26/ic_launcher_round.xml" value="0.1" />
       </map>
     </option>
   </component>

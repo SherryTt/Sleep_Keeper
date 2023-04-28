@@ -4,15 +4,18 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
-import android.app.ActionBar;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
+import android.text.SpannableString;
+import android.text.Spanned;
+import android.text.method.LinkMovementMethod;
+import android.text.style.ClickableSpan;
 import android.util.Log;
-import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.TextView;
 
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
@@ -24,16 +27,19 @@ public class ForgotPasswordActivity extends AppCompatActivity {
     public FirebaseAuth mAuth;
     Button resetPassBtn;
     EditText registeredEmailInput;
+    TextView linkRelogin;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_forgot_password);
 
+
         registeredEmailInput = findViewById(R.id.txtResetEmailInput);
         resetPassBtn = findViewById(R.id.ResetBtn);
+        linkRelogin = findViewById(R.id.lnkRelogin);
         mAuth = FirebaseAuth.getInstance();
-
 
 
         resetPassBtn.setOnClickListener(new View.OnClickListener() {
@@ -59,7 +65,8 @@ public class ForgotPasswordActivity extends AppCompatActivity {
                                         .setCancelable(false)
                                         .setPositiveButton("OK", new DialogInterface.OnClickListener() {
                                             public void onClick(DialogInterface dialog, int id) {
-
+                                                Intent loginActivity = new Intent(ForgotPasswordActivity.this, LoginActivity.class);
+                                                startActivity(loginActivity);
                                                 ForgotPasswordActivity.this.finish();
                                             }
                                         });
@@ -71,5 +78,23 @@ public class ForgotPasswordActivity extends AppCompatActivity {
                         });
             }
         });
+
+
+        //Below code is to make text view clickable link
+        String text = "Back to Login";
+        SpannableString span = new SpannableString(text);
+        ClickableSpan clickableSpan = new ClickableSpan() {
+            @Override
+            public void onClick(@NonNull View view) {
+                Intent loginActivity = new Intent(ForgotPasswordActivity.this, LoginActivity.class);
+                startActivity(loginActivity);
+                ForgotPasswordActivity.this.finish();
+            }
+        };
+        span.setSpan(clickableSpan,8,13, Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
+        linkRelogin.setText(span);
+        linkRelogin.setMovementMethod(LinkMovementMethod.getInstance());
+
+
     }
 }

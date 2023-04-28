@@ -19,8 +19,6 @@ import android.view.ViewGroup;
 import android.widget.EditText;
 import android.widget.Toast;
 
-import com.polar.sdk.api.PolarBleApi;
-import com.polar.sdk.api.PolarBleApiDefaultImpl;
 
 
 public class MainActivity extends AppCompatActivity {
@@ -29,7 +27,6 @@ public class MainActivity extends AppCompatActivity {
     private ActivityResultLauncher bluetoothOnActivityResultLauncher;
     private String sharedPrefsKey = "polar_device_id";
     private String DEVICE_ID;
-    private PolarBleApi api;
     SharedPreferences sharedPreferences;
 
 
